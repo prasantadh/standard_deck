@@ -24,10 +24,6 @@ impl Card {
     pub fn get_suit(&self) -> Suit {
         self.suit
     }
-
-    pub fn equal(&self, other: &Card) -> bool {
-        self.rank == other.rank && self.suit == other.suit
-    }
 }
 
 impl Display for Card {
