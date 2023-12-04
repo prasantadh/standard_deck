@@ -1,6 +1,6 @@
 use std::fmt::Display;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Rank {
     Two = 2,
     Three,
@@ -63,5 +63,15 @@ impl Display for Rank {
             other => (*other as isize).to_string(),
         };
         write!(f, "{}", c)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn ranks_can_be_compared() {
+        assert!(Rank::Ace > Rank::King);
     }
 }
