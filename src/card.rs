@@ -1,7 +1,7 @@
 use std::fmt::Display;
 
-use crate::rank::Rank;
-use crate::suit::Suit;
+use crate::Rank;
+use crate::Suit;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Card {
@@ -35,5 +35,23 @@ impl Display for Card {
 impl PartialEq for Card {
     fn eq(&self, other: &Self) -> bool {
         self.rank == other.rank && self.suit == other.suit
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::Card;
+
+    #[test]
+    fn new_works() {
+        let rank = crate::Rank::Two;
+        let suit = crate::Suit::Clubs;
+        assert!(
+            Card::new(&rank, &suit)
+                == Card {
+                    rank: crate::Rank::Two,
+                    suit: crate::Suit::Clubs
+                }
+        )
     }
 }
